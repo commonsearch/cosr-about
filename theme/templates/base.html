@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ SITEURL }}/{{ FAVICON }}" rel="icon">
+    <link rel="apple-touch-icon" href="{{ SITEURL }}/{{ TOUCHICON }}">
+
+    {% block canonical_rel %}{% endblock %}
+
+    {% block meta %}
+        <meta name="author" content="{{ AUTHOR }}" />
+    {% endblock %}
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" type="text/css"/>
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" rel="stylesheet">
+
+    {% if FEED_ALL_ATOM %}
+        <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate"
+              title="{{ SITENAME }} ATOM Feed"/>
+    {% endif %}
+
+    {% if FEED_ALL_RSS %}
+        <link href="{{ SITEURL }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate"
+              title="{{ SITENAME }} RSS Feed"/>
+    {% endif %}
+
+    {% if tag and TAG_FEED_ATOM %}
+        <link href="{{ SITEURL }}/{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate"
+              title="{{ SITENAME }} {{ tag }} ATOM Feed"/>
+    {% endif %}
+
+    {% if category and CATEGORY_FEED_ATOM %}
+        <link href="{{ SITEURL }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate"
+              title="{{ SITENAME }} {{ category }} ATOM Feed"/>
+    {% endif %}
+
+</head>
+<body class="{% if BANNER %}with-banner{% endif %}">
+
+<div class="navbar navbar-default" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <a href="{{ SITEURL }}/" class="navbar-brand">
+                <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/logo/logo-400.png" width="100" height="33" alt="Common Search"/>
+            </a>
+        </div>
+
+        <ul class="nav navbar-nav">
+            <li {% if (page is defined) and (page.template == "page_project") %}class="active"{%endif%}><a href="/mission">About the project</a></li>
+            <li><a href="https://uidemo.commonsearch.org">UI Demo</a></li>
+            <li {% if (page is defined) and (page.slug == "contributing") %}class="active"{%endif%}><a href="/contributing">How to contribute</a></li>
+            <li {% if (page is defined) and (page.template == "page_developer") %}class="active"{%endif%}><a href="/developer/get-started">Developers</a></li>
+            <li {% if (page is defined) and (page.slug == "contact") %}class="active"{%endif%}><a href="/contact">Contact</a></li>
+            <!-- <li><a href="/blog">Blog</a></li> -->
+        </ul>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!--[if lt IE 9]>
+<style>.github-fork-ribbon {display:none !important;}</style>
+<![endif]-->
+<a class="github-fork-ribbon" href="https://github.com/commonsearch" title="Contribute on GitHub">Contribute on GitHub</a>
+
+<!-- Banner -->
+{% if BANNER %}
+    <style>
+        #banner {
+            {% if BANNER.startswith("#") %}
+                background: {{ BANNER }};
+            {% else %}
+                background-image:url("{{ SITEURL }}/{{ THEME_STATIC_DIR }}/{{ BANNER }}");
+            {% endif %}
+
+            height:{{ BANNER_HEIGHT if BANNER_HEIGHT else 150 }}px;
+            {% if BANNER_HEIGHT and BANNER_HEIGHT > 100 %}
+                padding-top:40px;
+            {% endif %}
+        }
+    </style>
+    <div id="banner">
+        <div class="container">
+            <div class="copy">
+                {% if BANNER_TITLE %}
+                    <h1>{{ BANNER_TITLE }}</h1>
+                {% endif %}
+
+                {% if BANNER_SUBTITLE %}
+                    <p class="intro">{{ BANNER_SUBTITLE }}</p>
+                {% endif %}
+                {% block banner_buttons %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!-- End Banner -->
+
+<div class="container">
+    <div class="row">
+        {% if HAS_SIDEBAR == "left" %}
+            <div class="col-sm-2" id="sidebar">
+                <aside>
+                    {% block sidebar %}
+                    {% endblock %}
+                </aside>
+            </div>
+            <div class="col-sm-10">
+        {% elif HAS_SIDEBAR == "centered" %}
+            <div class="col-lg-8 col-lg-offset-2">
+        {% else %}
+            <div class="col-lg-12">
+        {% endif %}
+
+                {% block breadcrumbs %}
+                {% endblock %}
+                {% block content %}
+                {% endblock %}
+
+            </div>
+    </div>
+</div>
+{% include 'includes/footer.html' %}
+
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% set HAS_SIDEBAR = "left" %}
+{% set BANNER_HEIGHT = 150 %}
+{% set BANNER = "img/backgrounds/blooming4.jpg" %}
+{% set BANNER_TITLE = page.title %}
+
+{% extends "page.html" %}
+
+{% block sidebar %}
+<ul class="side-nav">
+  <li {% if page.slug == "mission" %}class="active"{% endif %}><a href="/mission">Mission</a></li>
+  <li {% if page.slug == "values" %}class="active"{% endif %}><a href="/values">Values</a></li>
+  <li {% if page.slug == "governance" %}class="active"{% endif %}><a href="/governance">Governance</a></li>
+  <li {% if page.slug == "people" %}class="active"{% endif %}><a href="/people">People</a></li>
+  <li {% if page.slug == "roadmap" %}class="active"{% endif %}><a href="/roadmap">Roadmap</a></li>
+  <li {% if page.slug == "faq" %}class="active"{% endif %}><a href="/faq">F.A.Q.</a></li>
+  <li {% if page.slug == "technology" %}class="active"{% endif %}><a href="/technology">Technology</a></li>
+  <li {% if page.slug == "privacy" %}class="active"{% endif %}><a href="/privacy">Privacy</a></li>
+
+  <li {% if page.slug == "data-sources" %}class="active"{% endif %}><a href="/data-sources">Data sources</a></li>
+  <li {% if page.slug == "partners" %}class="active"{% endif %}><a href="/partners">Partners</a></li>
+  <li {% if page.slug == "credits" %}class="active"{% endif %}><a href="/credits">Credits</a></li>
+
+</ul>
+{% endblock %}

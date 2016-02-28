@@ -1,0 +1,18 @@
+{% set HAS_SIDEBAR = "left" %}
+{% set BANNER_HEIGHT = 75 %}
+{% set BANNER = "#006666" %}
+{% set BANNER_TITLE = page.title %}
+
+{% extends "page.html" %}
+
+{% block sidebar %}
+<ul class="side-nav">
+  <li {% if page.slug == "developer/get-started" %}class="active"{% endif %}><a href="/developer/get-started">Get Started</a></li>
+  <li {% if page.slug == "developer/architecture" %}class="active"{% endif %}><a href="/developer/architecture">Architecture</a></li>
+  <li {% if page.slug == "developer/backend" %}class="active"{% endif %}><a href="/developer/backend">Backend</a></li>
+  <li {% if page.slug == "developer/frontend" %}class="active"{% endif %}><a href="/developer/frontend">Frontend</a></li>
+  <li {% if page.slug == "developer/operations" %}class="active"{% endif %}><a href="/developer/operations">Operations</a></li>
+  <li {% if page.slug == "developer/result-quality" %}class="active"{% endif %}><a href="/developer/result-quality">Result Quality</a></li>
+
+</ul>
+{% endblock %}

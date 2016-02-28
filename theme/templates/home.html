@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% set BANNER = "img/backgrounds/blooming4.jpg" %}
+{% set BANNER_HEIGHT = "250" %}
+{% set BANNER_TITLE = "We are building a nonprofit search engine for the Web" %}
+
+{% block banner_buttons %}
+	<a href="/mission" class="btn btn-primary btn-lg">Our mission &raquo;</a>
+	<a href="/contributing" class="btn btn-success btn-lg">Contribute &raquo;</a>
+{% endblock %}
+
+{% block canonical_rel %}<link rel="canonical" href="{{ SITEURL }}">{% endblock %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="col-xs-6">
+
+			<h3><a href="/mission">Discover our mission</a></h3>
+			<p>Why do we need a nonprofit search engine at all?</p>
+
+			<h3><a href="/values">Understand our values</a></h3>
+			<p>What makes us different: radical transparency, independence, ...</p>
+
+			<h3><a href="/faq">Frequently Asked Questions</a></h3>
+			<p>What about spam? Do you accept donations?</p>
+
+		</div>
+
+		<div class="col-xs-6">
+
+			<h3><a href="/roadmap">Current status &amp; Roadmap</a></h3>
+			<p>Check the state of the project and what's next for us</p>
+
+			<h3><a href="/contributing">How to contribute</a></h3>
+			<p>We welcome developers, designers, testers and more!</p>
+
+			<h3><a href="/data-sources">Data sources</a></h3>
+			<p>Where do our results come from?</p>
+
+
+		</div>
+	</div>
+
+{% endblock %}
