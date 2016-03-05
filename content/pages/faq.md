@@ -10,6 +10,7 @@ We are the only large-scale, nonprofit search engine. We have established [clear
 We will particularly stand out with features that are not in the best interest of commercial search engines: showing less (if no) ads, having an open API, and generally not trying to maximize the amount of time users spend on our service.
 
 
+
 ### How can you ever hope to beat Google?
 
 We don't need to "win" against any existing search engine. Our [primary goal](/mission) for the forseeable future is just to exist, be relevant, and provide a new alternative for users.
@@ -17,13 +18,13 @@ We don't need to "win" against any existing search engine. Our [primary goal](/m
 We think having a few percents of global market share would be enough to have a profound impact on the Web and restore some balance. As an example, Firefox never achieved a majority market share but succeeded in [reshaping](https://en.wikipedia.org/wiki/Browser_wars#Second_browser_war) the browser landscape for the better.
 
 
+
 ### How can you fight spam if your ranking algorithm is open source?
 
-First of all, an open algorithm doesn't prevent our community from manually reporting cases of spam.
+We firmly believe that a large community collaborating on spam detection will stay one step ahead of the game.
 
 It is important that the factors taken into account in the ranking algorithm are aligned with good practices for building user-friendly websites so that optimizing for the algorithm means building a better website for users.
 
-Lastly, though reverse-engineering the exact way we rank each page should be possible, it doesn't need to be easy.
 
 
 ### Search engines are old news! Why don't you build a Knowledge/Semantic/AI engine?
@@ -40,7 +41,8 @@ We are big fans of DuckDuckGo. Their [work on privacy](https://duckduckgo.com/pr
 
 However, they don't operate their own index of the web (their results come from other engines like Bing or Yandex) so they can't provide any [transparency](/values#transparency) on the rankings.
 
-More importantly, nothing makes them fundamentally different from Google in its early days, whose motto was ["Don't be evil"](https://en.wikipedia.org/wiki/Don%27t_be_evil). They are a company and their investors expect to make money from their users. We hope they will, but our [mission](/mission) remains to provide a nonprofit alternative for the Web.
+More importantly, nothing makes them fundamentally different from Google in its early days, whose motto was ["Don't be evil"](https://en.wikipedia.org/wiki/Don%27t_be_evil). They are a company and their investors expect to make money from their users. We hope they will, but our [mission](/mission) remains to provide a nonprofit alternative for the Web and make our results available to everyone, including DuckDuckGo!
+
 
 
 ### Do you accept donations?
@@ -51,13 +53,8 @@ Not yet, but we will. What we need the most right now is new [contributors](/con
 
 ### Will there be ads on Common Search?
 
-At scale, our operating costs will be extremely large compared to other open source projects. Ads are currently the primary revenue source of all the large-scale search engines, so it may very well be our only choice at the moment, though we will research other ways to be sustainable at length, including recurring donations, affiliate links, ...
+We will only consider ads after having exhausted all the other ways to be financially sustainable.
 
-If we need to have ads, they be restricted by very strong rules dictated by our [core values](/values):
+At scale our operating costs will be extremely large compared to other open source projects that typically rely on donations, so we will research many other funding models including recurring donations, affiliate programs, grants, ...
 
- - For [independence](/values#independence), there would need to be many technological and social checks in place to make sure no advertiser is ever able to have any impact on our organic results.
- - For [transparency](/values#transparency), all ads would need to be clearly labelled as paid links.
- - For [frugalism](/values#frugalism), ads would be strictly limited in size, form and location. For instance, ads should never be shown above the first organic result.
- - For [privacy](/values#privacy), nothing other than the search string and country could be shared with third parties.
-
-Our [board of trustees](/governance) will be responsible for finding the right compromise and make this project sustainable.
+Our [board of trustees](/governance) will be responsible for finding the right compromise and making sure we stay true to our [core values](/values), most importantly [transparency](/values#transparency), [independence](/values#independence), [frugalism](/values#frugalism) and [privacy](/values#privacy).

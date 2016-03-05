@@ -229,9 +229,14 @@ body.with-banner section.body {
 
 }
 
-@media (max-width: 967px) {
+@media (max-width: 992px) {
 
     .github-fork-ribbon {
         display:none;
+    }
+    .nav>li>a {
+      font-size:14px;
+      padding-left:10px;
+      padding-right:10px;
     }
 }
