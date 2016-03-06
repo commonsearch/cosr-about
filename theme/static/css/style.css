@@ -227,6 +227,11 @@ body.with-banner section.body {
         display:inline-block;
     }
 
+    h1 {
+      font-size: 22px;
+      margin-top:10px;
+    }
+
 }
 
 @media (max-width: 992px) {
