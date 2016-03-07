@@ -14,6 +14,7 @@ We are currently reaching out to potential [trustees](/governance).
  - **[Erik Möller](https://en.wikipedia.org/wiki/Erik_M%C3%B6ller)**: Former Deputy Director of the [Wikimedia Foundation](https://wikimediafoundation.org/wiki/Home)
  - **[Gaël Duval](http://www.indidea.org/gael/blog/)**: Creator of [Mandrake Linux](https://en.wikipedia.org/wiki/Mandriva_Linux)
  - **[Olivier Grisel](http://ogrisel.com/)**: Contributor to [scikit-learn](http://scikit-learn.org/stable/)
+ - **[Lydia Pintscher](http://www.lydiapintscher.de/)**: Product Manager for [Wikidata](https://wikidata.org/)
 
 We are currently looking for more advisors. Please [reach out](mailto:contact@commonsearch.org) if you are interested!
 
