@@ -6,7 +6,7 @@ See [People](/people) for a list of direct contributors to the project.
 
 ## Code
 
-We use many other open source projects as dependencies or tools, to be listed here.
+We use many open source projects as dependencies or tools. They will be listed here soon!
 
 ## Graphics
 

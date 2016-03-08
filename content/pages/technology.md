@@ -20,6 +20,6 @@ We will choose languages, tools and frameworks not only based on their performan
 
 We think companies supporting the tools or services we use (or plan to use) have a strong incentive to help us in order to demonstrate the value of their products.
 
-We will be happy to partner with any organization that can help us reduce our costs or improve the service, as long as they don't influence our search results and respect our [independence](/values#independence).
+We will be happy to partner with any organization that can help us reduce our costs or improve the service, as long as they respect our [independence](/values#independence) and don't influence our search results.
 
 See [Partners](/partners).
