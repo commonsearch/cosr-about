@@ -63,8 +63,6 @@ Our [board of trustees](/governance) will be responsible for finding the right c
 
 ### What does Common Search mean?
 
-The primary meaning is search as [commons](https://en.wikipedia.org/wiki/Commons), produced and governed for public benefit; see our [mission](https://about.commonsearch.org/mission).
+The primary meaning is search as [commons](https://en.wikipedia.org/wiki/Commons), produced and governed for public benefit; see our [mission](/mission).
 
-The name also touches on lack of personalization and tracking, allowing common searches to be [very fast](https://about.commonsearch.org/technology), in addition to protecting user privacy as a public interest arbiter ought to.
-
-Common Search is the name of this project might not be the final name of the "final" search engine. It's a good project name but may not be a good enough product name, we'll have to test it further!
+The name also touches on lack of personalization and tracking, allowing common searches to be [very fast](/technology), in addition to protecting user privacy as a public interest arbiter ought to.
