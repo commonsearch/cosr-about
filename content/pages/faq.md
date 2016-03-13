@@ -58,3 +58,13 @@ We will only consider ads after having exhausted all the other ways to be financ
 At scale our operating costs will be extremely large compared to other open source projects that typically rely on donations, so we will research many other funding models including recurring donations, affiliate programs, grants, ...
 
 Our [board of trustees](/governance) will be responsible for finding the right compromise and making sure we stay true to our [core values](/values), most importantly [transparency](/values#transparency), [independence](/values#independence), [frugalism](/values#frugalism) and [privacy](/values#privacy).
+
+
+
+### What does Common Search mean?
+
+The primary meaning is search as [commons](https://en.wikipedia.org/wiki/Commons), produced and governed for public benefit; see our [mission](https://about.commonsearch.org/mission).
+
+The name also touches on lack of personalization and tracking, allowing common searches to be [very fast](https://about.commonsearch.org/technology), in addition to protecting user privacy as a public interest arbiter ought to.
+
+Common Search is the name of this project might not be the final name of the "final" search engine. It's a good project name but may not be a good enough product name, we'll have to test it further!
