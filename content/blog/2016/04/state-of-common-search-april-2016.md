@@ -28,6 +28,8 @@ In our first month, we had **7** contributors, **10** users who submitted issues
  - Add approximated total result count ([#14](https://github.com/commonsearch/cosr-front/issues/14)) - [Yu Wu](https://github.com/chaconnewu)
  - Localized !bang codes ([#3](https://github.com/commonsearch/cosr-front/issues/3)) - [Sylvain Zimmer](https://github.com/sylvinus)
 
+You can already test all these improvements in our [UI Demo](https://uidemo.commonsearch.org/)!
+
 ## Other
 
  - We made a few documentation improvements, simplified local setup with Docker images for all projects, and wrote a tutorial on [how to send a first Frontend patch](https://about.commonsearch.org/developer/tutorials/first-frontend-patch).
@@ -43,7 +45,7 @@ We have set 2 primary goals for the next few months:
 
 ## 1. Reach 100 contributors
 
-To grow, we need to continue optimizing our project for new contributions. We are tracking progress and ideas on how to reach 100 contributors in our dedicated repository [cosr-participation](https://github.com/commonsearch/cosr-participation). Please consider [contributing](/contributing) and telling us about your first-timer experience afterwards!
+To grow, we need to continue optimizing our project for new contributions. We are tracking progress and ideas on how to reach 100 contributors in our dedicated repository [cosr-participation](https://github.com/commonsearch/cosr-participation/issues). Please consider [contributing](/contributing) and telling us about your first-timer experience afterwards!
 
 ## 2. Send a ranked URL seed list to Common Crawl
 
