@@ -13,6 +13,8 @@ We are just launching the project and [looking for contributors](/contributing).
 
 **Governance:** We are looking for more advisors and reaching out to potential trustees.
 
+For more details, see our latest [State of Common Search](/2016/04/state-of-common-search-april-2016/) blog entry!
+
 
 ## Roadmap
 

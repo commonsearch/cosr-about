@@ -241,7 +241,7 @@ body.with-banner section.body {
     }
     .nav>li>a {
       font-size:14px;
-      padding-left:10px;
-      padding-right:10px;
+      padding-left:5px;
+      padding-right:5px;
     }
 }

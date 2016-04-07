@@ -1,4 +1,16 @@
 {% extends "base.html" %}
+
+{% set HAS_SIDEBAR = "centered" %}
+{% set BANNER_HEIGHT = 75 %}
+{% set BANNER = "#006666" %}
+{% block banner_title %}
+    <h1><a style="color:inherit;text-decoration:none;" href="{{ SITEURL }}/{{ article.url }}"
+       rel="bookmark"
+       title="Permalink to {{ article.title|striptags }}">
+        {{ article.title }}
+    </a></h1>
+{% endblock %}
+
 {% block title %}{{ article.title|striptags }} - {{ SITENAME }}{% endblock %}
 {% block html_lang %}{{ article.lang }}{% endblock %}
 {% block meta %}
@@ -70,26 +82,19 @@
 {% block content %}
     <section id="content">
         <article>
-            <header class="page-header">
-                <h1>
-                    <a href="{{ SITEURL }}/{{ article.url }}"
-                       rel="bookmark"
-                       title="Permalink to {{ article.title|striptags }}">
-                        {{ article.title }}
-                    </a>
-                </h1>
-            </header>
             <div class="entry-content">
                 <div class="panel">
-                    <div class="panel-body">
+                    <div class="panel-body" style="text-align:right;padding-bottom:0;">
+
+                        <p class="pull-right" style="margin-left:20px;"><i class="fa fa-arrow-up"></i> <a href="/blog/">Back to blog</a></p>
+
                         {% include "includes/article_info.html" %}
+
+
                     </div>
                 </div>
                 {{ article.content }}
             </div>
-            <!-- /.entry-content -->
-            {% include 'includes/related-posts.html' %}
-            {% include 'includes/series.html' %}
         </article>
     </section>
 

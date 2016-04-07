@@ -45,6 +45,9 @@ HOME_SAVE_AS = 'index.html'
 PAGE_SAVE_AS = '{slug}.html'
 PAGE_URL = '/{slug}'
 
+PLUGIN_PATHS = ['plugins']
+PLUGINS = ['summary']
+
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 

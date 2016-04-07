@@ -56,6 +56,7 @@
             <li><a href="https://uidemo.commonsearch.org">UI Demo</a></li>
             <li {% if (page is defined) and (page.slug == "contributing") %}class="active"{%endif%}><a href="/contributing">How to contribute</a></li>
             <li {% if (page is defined) and (page.template == "page_developer") %}class="active"{%endif%}><a href="/developer/get-started">Developers</a></li>
+            <li {% if (article is defined) or (articles_paginator is defined) %}class="active"{%endif%}><a href="/blog/">Blog</a></li>
             <li><a href="https://discuss.commonsearch.org">Discuss</a></li>
             <li {% if (page is defined) and (page.slug == "contact") %}class="active"{%endif%}><a href="/contact">Contact</a></li>
             <!-- <li><a href="/blog">Blog</a></li> -->
@@ -88,9 +89,7 @@
     <div id="banner">
         <div class="container">
             <div class="copy">
-                {% if BANNER_TITLE %}
-                    <h1>{{ BANNER_TITLE }}</h1>
-                {% endif %}
+                {% block banner_title %}{% endblock %}
 
                 {% if BANNER_SUBTITLE %}
                     <p class="intro">{{ BANNER_SUBTITLE }}</p>
@@ -113,7 +112,7 @@
             </div>
             <div class="col-sm-10">
         {% elif HAS_SIDEBAR == "centered" %}
-            <div class="col-lg-8 col-lg-offset-2">
+            <div class="col-md-8 col-md-offset-2">
         {% else %}
             <div class="col-lg-12">
         {% endif %}

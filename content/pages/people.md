@@ -15,6 +15,7 @@ We are currently reaching out to potential [trustees](/governance).
  - **[Gaël Duval](http://www.indidea.org/gael/blog/)**: Creator of [Mandrake Linux](https://en.wikipedia.org/wiki/Mandriva_Linux)
  - **[Olivier Grisel](http://ogrisel.com/)**: Contributor to [scikit-learn](http://scikit-learn.org/stable/)
  - **[Lydia Pintscher](http://www.lydiapintscher.de/)**: Product Manager for [Wikidata](https://wikidata.org/)
+ - **[Stephan Ramoin](https://twitter.com/stephangandi)**: CEO of [Gandi.net](https://gandi.net/)
 
 We are currently looking for more advisors. Please [reach out](mailto:contact@commonsearch.org) if you are interested!
 
