@@ -3,7 +3,7 @@ Slug: state-of-common-search-april-2016
 Date: 2016-04-06 14:36:19
 Author: commonsearch
 
-Common Search was [soft-launched](https://twitter.com/sylvinus/status/706605807354449920) one month ago, on March 6th. To keep up with the latest developments we will publish monthly reports of our activity, starting with this one!
+Common Search was [soft-launched](https://twitter.com/sylvinus/status/706605807354449920) one month ago, on March 6th. To keep up with the latest developments we will publish regular reports of our activity, starting with this one!
 
 <!-- PELICAN_END_SUMMARY -->
 
