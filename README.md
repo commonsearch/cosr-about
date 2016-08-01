@@ -11,7 +11,7 @@ Running `cosr-about` on your local machine is very simple. You only need to have
 Once Docker is launched, just run:
 
 ```
-make docker_devserver
+[sudo] make docker_devserver
 ```
 
 Then open http://192.168.99.100:9701/ in your browser. (Replace "192.168.99.100" by the address of your Docker machine. On a Mac, you can get it with `docker-machine ip boot2docker`)
