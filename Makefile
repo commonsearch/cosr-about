@@ -1,3 +1,4 @@
+PWD := $(shell pwd)
 PY?=python
 PELICAN?=pelican
 PELICANOPTS=
