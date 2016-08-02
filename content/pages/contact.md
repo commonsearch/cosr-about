@@ -6,9 +6,11 @@ Template: page_contribute
 
 You can send us an email to [contact@commonsearch.org](mailto:contact@commonsearch.org)
 
-## IRC
+## Slack
 
-To talk with us directly you can join [irc://irc.freenode.net/commonsearch](https://webchat.freenode.net/?channels=#commonsearch)
+To chat with us directly you can join our [Slack channel](https://slack.commonsearch.org) by clicking on the button below:
+
+<script async defer src="https://slack.commonsearch.org/slackin.js"></script>
 
 ## Press
 

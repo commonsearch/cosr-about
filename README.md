@@ -1,5 +1,7 @@
 # cosr-about
 
+[![Chat with us on Slack](https://slack.commonsearch.org/badge.svg)](https://slack.commonsearch.org) [![Apache License 2.0](https://img.shields.io/github/license/commonsearch/cosr-back.svg)](LICENSE)
+
 This repository contains our presentation website and blog hosted at https://about.commonsearch.org/.
 
 You can use the [issues page](https://github.com/commonsearch/cosr-about) to suggest improvements to the content or layout!
