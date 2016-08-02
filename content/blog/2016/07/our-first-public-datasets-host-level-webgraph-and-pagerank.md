@@ -63,7 +63,7 @@ We encourage everyone to analyze these datasets and **report their findings publ
 
 Here is a non-exhaustive list of interesting areas to explore:
 
- - Spam! We have opened an [issue in GitHub]() to track the progress. Join the fight!
+ - Spam! We have opened an [issue in GitHub](https://github.com/commonsearch/cosr-back/issues/52) to track the progress. Join the fight!
  - Analyzing correlations between the PageRank dataset and other public domain rankings (Top sites in Alexa, ...)
  - Using the WebGraph dataset to create other metrics, for instance: [Centrality](https://en.wikipedia.org/wiki/Centrality), [CheiRank](https://en.wikipedia.org/wiki/CheiRank), [HITS](https://en.wikipedia.org/wiki/HITS_algorithm), [SALSA](https://en.wikipedia.org/wiki/SALSA_algorithm), ...
  - Review our [Python code on GitHub](https://github.com/commonsearch/cosr-back) to look for bugs and speed improvements!
