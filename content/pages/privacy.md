@@ -22,7 +22,8 @@ The only information we (and our CDN) receive for each search are:
 
 We currently do not store any of this, though we will probably start logging aggregate query volume (without IP addresses) to understand usage and provide autocompletion.
 
-We will also open a [Tor hidden service](https://en.wikipedia.org/wiki/Tor_(anonymity_network)#Hidden_services) so that our users can safely mask their IP address. See [cosr-ops#8](https://github.com/commonsearch/cosr-ops/issues/8).
+We also have a [Tor hidden service](https://en.wikipedia.org/wiki/Tor_(anonymity_network)#Hidden_services) so that our users can safely mask their IP address: [http://comsearchl2zlnre.onion](http://comsearchl2zlnre.onion)
+
 
 ## Why you can trust us
 
