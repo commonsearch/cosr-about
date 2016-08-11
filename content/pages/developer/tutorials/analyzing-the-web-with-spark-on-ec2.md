@@ -15,7 +15,10 @@ An [Amazon Web Services](https://aws.amazon.com/) account is needed for this tut
 
 We have Docker containers ready to use so this step should take you only a few minutes!
 
-You can follow the instructions in [cosr-back/INSTALL.md](https://github.com/commonsearch/cosr-back/blob/master/INSTALL.md) (which contains the Python code that analyzes the documents) and then [cosr-ops/INSTALL.md](https://github.com/commonsearch/cosr-ops/blob/master/INSTALL.md) (which contains the tools to manage operations and infrastructure).
+There are 2 sets of instructions to follow:
+
+ - [cosr-back/INSTALL.md](https://github.com/commonsearch/cosr-back/blob/master/INSTALL.md): Python code that analyzes the documents
+ - [cosr-ops/INSTALL.md](https://github.com/commonsearch/cosr-ops/blob/master/INSTALL.md): Tools to manage operations and infrastructure
 
 
 ## 2. Understand how document sources and plugins work
@@ -33,7 +36,7 @@ For this example, let's collect all links to Wikipedia pages, except those comin
 
 It is very useful to test your pipeline on a few of documents on your local machine before scaling up to billions of documents!
 
-Open a console in the `cosr-back` repository you just installed, and run:
+Open a console in the [cosr-back repository](https://github.com/commonsearch/cosr-back) you just installed, and run:
 
 ```
 make docker_shell
@@ -53,8 +56,8 @@ We are using [Common Crawl](https://github.com/commonsearch/cosr-back/blob/maste
 
 We are using 2 different plugins:
 
- - [plugins.filter.Domains](https://github.com/commonsearch/cosr-back/blob/master/plugins/filter.py): it blacklists some domains we want to skip. You can configure it with `--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com"` (note the quotes! we need them because the plugin argument includes a space).
- - [plugins.hyperlinks.MostExternallyLinkedPages](https://github.com/commonsearch/cosr-back/blob/master/plugins/hyperlinks.py): it will output a list of pages on a specific domain that have the most backlinks in the document sources we are processing. Let's configure it like this: `--plugin plugins.hyperlinks.MostExternallyLinkedPages:domain=wikipedia.org,path=out/top_wikipedia/`.
+ - [plugins.filter.Domains](https://github.com/commonsearch/cosr-back/blob/master/plugins/filter.py): blacklists some domains we want to skip. You can configure it with `--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com"` (note the quotes! we need them because the plugin argument includes a space).
+ - [plugins.hyperlinks.MostExternallyLinkedPages](https://github.com/commonsearch/cosr-back/blob/master/plugins/hyperlinks.py): outputs a list of pages on a specific domain that have the most backlinks in the document sources we are processing. Let's configure it like this: `--plugin plugins.hyperlinks.MostExternallyLinkedPages:domain=wikipedia.org,path=out/top_wikipedia/`.
 
 Finally, let's add another useful option to our job: `--stop_delay 600`. This will prevent Spark from exiting for 10 minutes when your job is done, so that we have time to open the Spark Web UI and see what happened!
 
@@ -69,7 +72,7 @@ Spark has a very convenient Web UI that lets you debug the jobs that are running
 <div style="width:80%;margin:auto;text-align:center;font-size:12px;margin-bottom:20px;font-style:italic;"><img style="border:1px solid #C0C0C0;padding:5px;margin:5px;" src="/images/developer/tutorials/spark-backlinks-web-ui.png" alt="Spark Web UI" /><br/>The Spark Web UI</div>
 
 
-Once all the jobs are done and you have finished exploring the Spark UI, go back to the console and send a `Ctrl-C` to the command to interrupt the `stop_delay`.
+Once all the jobs are done and you have finished exploring the Spark UI, go back to the console and send a `Ctrl-c` to the command to interrupt the `stop_delay`.
 
 Now you can open the file `out/top_wikipedia/part-*.txt` that should have been created and make sure it is what you want!
 
@@ -86,9 +89,13 @@ There is a file in the [cosr-ops repository](https://github.com/commonsearch/cos
 
 We should now choose an instance type and a number of machines in our cluster. Our pipeline is usually CPU-bound, so the most important metric will be the number of cores. The [C4 instance family](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/c4-instances.html) has the best CPU performance/cost ratio, and it usually takes around 15 minutes for a C4 core to index a full Common Crawl segment.
 
-For this example, this means that if we want to process the whole Common Crawl, we will need (15/60) * 30000 = 7500 CPU hours. If we want to run it in 24 hours, we will need 9 `c4.8xlarge` instances with 36 CPUs each. You could also do it in just a couple hours with more instances, but you might need to ask for a raise in EC2 limits to be able to launch tens of them at once.
+For this example, this means that if we want to process the whole Common Crawl, we will need (15/60) * 30000 = 7500 CPU hours. If we want to run it in 24 hours, we will need 9 `c4.8xlarge` instances with 36 CPUs each. You could also do it in just a couple hours with more instances, but you might need to ask for a raise in [EC2 limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to be able to launch tens of them at once.
 
-Once you have the configuration of your cluster filled in your `flintrock.yaml` file, you are ready to launch the cluster! Open a console in the `cosr-ops` repository and just like the previous step, do `make docker_shell` to enter the container.
+Once you have the configuration of your cluster filled in your `flintrock.yaml` file, you are ready to launch the cluster! Open a console in the [cosr-ops repository](https://github.com/commonsearch/cosr-ops) and just like the previous step, do this to enter the container:
+
+```
+make docker_shell
+```
 
 Once in the container, you should configure your AWS credentials, doing something like this:
 
@@ -103,7 +110,7 @@ Then, let's create the cluster:
 make aws_spark_flintrock_create
 ```
 
-If this command is successfuly, it will ultimately log you in the Spark master server.
+If this command is successful, it will ultimately log you in the Spark master server.
 
 The Web UI should also have been launched. Open it at http://[spark_master_hostname]:8080
 
@@ -112,13 +119,13 @@ The Web UI should also have been launched. Open it at http://[spark_master_hostn
 
 You have now a shell in the Spark master. This is very similar to step 3 except now you have much more CPUs at your fingertips and you are paying for each hour that the cluster spends online. So let's not waste any time!
 
-First, let's open a `screen` in the server, so that we don't loose anything if you are temporarily disconnected from the Internet.
+First, let's open a [screen](https://kb.iu.edu/d/acuy) in the server, so that we don't loose anything if you are temporarily disconnected from the Internet.
 
 ```
 screen -S sparkjob
 ```
 
-You can exit this screen with `Ctrl-A D` and go back into it with `screen -x sparkjob`.
+You can exit this screen with the `Ctrl-a d` keys and go back into it with `screen -x sparkjob`.
 
 Now let's assemble a new `spark-submit` command like we did in step 3!
 
@@ -139,5 +146,5 @@ Once the pipeline is finished... congratulations! You just ran some code on bill
 
 There are a few things you may want to try after this:
 
- - Try our other plugins and document sources... or create your own!
+ - Try our other [plugins](https://github.com/commonsearch/cosr-back/tree/master/plugins) and [document sources](https://github.com/commonsearch/cosr-back/tree/master/cosrlib/sources)... or create your own!
  - Index the documents into Elasticsearch, like Common Search does.
