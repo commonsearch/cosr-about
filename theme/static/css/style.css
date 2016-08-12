@@ -103,6 +103,18 @@ a, a:hover {
     margin:10px;
 }
 
+.banner-height-75 h1 {
+    line-height:75px;
+    margin:0;
+    padding:0;
+}
+
+.banner-height-75 a {
+    display:inline-block;
+    line-height:35px;
+}
+
+
 body.with-banner section.body {
     padding-top:20px;
 }
@@ -243,5 +255,12 @@ body.with-banner section.body {
       font-size:14px;
       padding-left:5px;
       padding-right:5px;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    .banner-height-75 h1 {
+        font-size:32px;
     }
 }

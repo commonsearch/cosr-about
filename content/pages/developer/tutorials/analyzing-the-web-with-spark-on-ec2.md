@@ -79,7 +79,7 @@ Now you can open the file `out/top_wikipedia/part-*.txt` that should have been c
 
 ## 4. Create a Spark cluster on EC2
 
-Now, Common Crawl typically has 30,000+ segments of 50,000+ documents each so processing each document on your local machine will take a while. Let's move to the cloud!
+Common Crawl typically has 30,000+ segments of 50,000+ documents each so processing each document on your local machine will take a while. Let's move to the cloud!
 
 We are going to deploy a Spark cluster on a fleet of [Spot Instances on EC2](https://aws.amazon.com/ec2/spot/). Spot Instances are ideal for this kind of data processing: they cost much less than regular instances and if they are killed during our job, we can just run it again!
 
@@ -89,7 +89,7 @@ There is a file in the [cosr-ops repository](https://github.com/commonsearch/cos
 
 We should now choose an instance type and a number of machines in our cluster. Our pipeline is usually CPU-bound, so the most important metric will be the number of cores. The [C4 instance family](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/c4-instances.html) has the best CPU performance/cost ratio, and it usually takes around 15 minutes for a C4 core to index a full Common Crawl segment.
 
-For this example, this means that if we want to process the whole Common Crawl, we will need (15/60) * 30000 = 7500 CPU hours. If we want to run it in 24 hours, we will need 9 `c4.8xlarge` instances with 36 CPUs each. You could also do it in just a couple hours with more instances, but you might need to ask for a raise in [EC2 limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to be able to launch tens of them at once.
+So for this example, if we want to process the whole Common Crawl, we will need (15/60) * 30000 = 7500 CPU hours. If we want to run it in 24 hours, we will need 9 `c4.8xlarge` instances with 36 CPUs each. You could also do it in just a couple hours with more instances, but you might need to ask for a raise in [EC2 limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) to be able to launch tens of them at once.
 
 Once you have the configuration of your cluster filled in your `flintrock.yaml` file, you are ready to launch the cluster! Open a console in the [cosr-ops repository](https://github.com/commonsearch/cosr-ops) and just like the previous step, do this to enter the container:
 
@@ -147,4 +147,4 @@ Once the pipeline is finished... congratulations! You just ran some code on bill
 There are a few things you may want to try after this:
 
  - Try our other [plugins](https://github.com/commonsearch/cosr-back/tree/master/plugins) and [document sources](https://github.com/commonsearch/cosr-back/tree/master/cosrlib/sources)... or create your own!
- - Index the documents into Elasticsearch, like Common Search does.
+ - Index the documents into Elasticsearch! Stay tuned for a tutorial on this topic...
