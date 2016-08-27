@@ -4,7 +4,7 @@ Template: page_developer
 
 This tutorial get you through all the steps required to analyze a large number of web pages with [Apache Spark](spark.apache.org) on EC2 using our [Backend](/developer/backend).
 
-Common Search has a plugin system that allows developers to build their own processing pipeline. For this tutorial, we will run a plugin that dumps a list of backlinks to a specific domain.
+Common Search has a plugin system that allows developers to build their own processing pipeline. For this tutorial, we will run a plugin that takes a domain and dumps a list of its pages with the most backlinks on the web.
 
 Common Search uses the same pipeline to index the web in Elasticsearch, so you can follow the same steps to do any operation on the document sources we support.
 
@@ -31,7 +31,7 @@ You should view this process as a data pipeline with some document sources as in
 
 In this tutorial we will use one document source ([Common Crawl](https://www.commoncrawl.org)) and two plugins (one to filter documents, and one to dump our list of backlinks).
 
-For this example, let's collect all links to Wikipedia pages, except those coming from Blogpost or Tumblr. This is how the pipeline looks:
+For this example, let's collect all links to Wikipedia pages, except those coming from Blogpost or Tumblr. The pipeline looks like this:
 
 [![Pipeline](/images/developer/tutorials/spark-backlinks-pipeline.svg)](/images/developer/tutorials/spark-backlinks-pipeline.svg)
 
@@ -121,7 +121,7 @@ The last step is to create a configuration file for `cosr-back`. There is a file
 
 ## 5. Launch your Spark cluster
 
-Once you have the configuration of your cluster filled in your `flintrock.yaml` file, you are ready to launch the cluster! Open a console in the [cosr-ops repository](https://github.com/commonsearch/cosr-ops) and just like the previous step, do this to enter the container:
+Once the configuration files are ready, you can launch the cluster! Open a console in the [cosr-ops repository](https://github.com/commonsearch/cosr-ops) and just like the previous step, do this to enter the container:
 
 ```
 make docker_shell
@@ -207,8 +207,8 @@ spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 5
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
-	--plugin plugins.backlinks.MostExternallyLinkedPages \
-	--plugin plugins.dump.DocumentMetadata:path=s3a://my-spark-results/intermediate-metadata/,abort=1
+	--plugin plugins.dump.DocumentMetadata:path=s3a://my-spark-results/intermediate-metadata/,abort=1 \
+	--plugin plugins.backlinks.MostExternallyLinkedPages
 ```
 
 Note the `abort=1` option for the dump plugin: this will interrupt the pipeline before starting to aggregate the backlinks. However we still need to include the backlinks plugin in the pipeline so that its additional fields are included in the intermediate metadata.
