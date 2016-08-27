@@ -181,7 +181,7 @@ This time, there are a few flags that will change:
 So this is the type of command we will run inside the `screen`:
 
 ```
-spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G \
+spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G --properties-file /cosr/back/spark/conf/spark-defaults.conf \
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
@@ -200,28 +200,27 @@ In the previous step, we are parsing data straight from Common Crawl and feeding
 
 There is a convenient way of separating the parsing from the plugin execution: saving intermediate parsing results to S3!
 
-This can be done by adding the `dump.DocumentMetadataParquet` plugin to our pipeline:
+This can be done by adding the `dump.DocumentMetadata` plugin to our pipeline:
 
 ```
-spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G \
+spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G --properties-file /cosr/back/spark/conf/spark-defaults.conf \
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
 	--plugin plugins.backlinks.MostExternallyLinkedPages \
-	--plugin plugins.dump.DocumentMetadataParquet:path=s3a://my-spark-results/intermediate-metadata/,abort=1
+	--plugin plugins.dump.DocumentMetadata:path=s3a://my-spark-results/intermediate-metadata/,abort=1
 ```
 
 Note the `abort=1` option for the dump plugin: this will interrupt the pipeline before starting to aggregate the backlinks. However we still need to include the backlinks plugin in the pipeline so that its additional fields are included in the intermediate metadata.
 
-After the pipeline has finished, you can check the folder `intermediate-metadata` in your S3 bucket. It should contain the list of outgoing links of each page, in [Apache Parquet](https://parquet.apache.org/) format.
+After the pipeline has finished, you can check the folder `intermediate-metadata` in your S3 bucket. It will contain the list of outgoing links of each page, in [Apache Parquet](https://parquet.apache.org/) format.
 
-Now, we can run the pipeline again with the `parquet` source pointed at the intermedate data:
+Now, we can run the pipeline again with the `metadata` source pointed at the intermedate data:
 
 ```
-spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G \
+spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G --properties-file /cosr/back/spark/conf/spark-defaults.conf \
 	/cosr/back/spark/jobs/pipeline.py \
-	--source parquet:path=s3a://my-spark-results/intermediate-metadata/ \
-	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
+	--source metadata:path=s3a://my-spark-results/intermediate-metadata/ \
 	--plugin plugins.backlinks.MostExternallyLinkedPages:path=s3a://my-spark-results/top_wikipedia/,domain=wikipedia.org,gzip=1
 ```
 
