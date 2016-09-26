@@ -207,11 +207,13 @@ spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 5
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
-	--plugin plugins.dump.DocumentMetadata:path=s3a://my-spark-results/intermediate-metadata/,abort=1 \
+	--plugin plugins.dump.DocumentMetadata:path=s3a://my-spark-results/intermediate-metadata/,coalesce=6000,abort=1 \
 	--plugin plugins.backlinks.MostExternallyLinkedPages
 ```
 
 Note the `abort=1` option for the dump plugin: this will interrupt the pipeline before starting to aggregate the backlinks. However we still need to include the backlinks plugin in the pipeline so that its additional fields are included in the intermediate metadata.
+
+There is another important option: `coalesce=6000`. Common Crawl usually has ~30,000 files, and you want to go through them in parrallel over all the EC2 cores you started. So you need to specify how much intermediate files you want with this `coalesce` parameter. Using 6000 means that each core will read ~5 Common Crawl segments, write an intermediate file, and continue to the next task. Without this option, only one core would read all Common Crawl segments and output a single, huge and unpractical intermediate dump file.
 
 After the pipeline has finished, you can check the folder `intermediate-metadata` in your S3 bucket. It will contain the list of outgoing links of each page, in [Apache Parquet](https://parquet.apache.org/) format.
 
