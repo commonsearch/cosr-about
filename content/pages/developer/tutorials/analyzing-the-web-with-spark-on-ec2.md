@@ -67,7 +67,7 @@ We are using [Common Crawl](https://github.com/commonsearch/cosr-back/blob/maste
 We are using 2 different plugins:
 
  - [plugins.filter.Domains](https://github.com/commonsearch/cosr-back/blob/master/plugins/filter.py): blacklists some domains we want to skip. You can configure it with `--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com"` (note the quotes! we need them because the plugin argument includes a space).
- - [plugins.backlinks.MostExternallyLinkedPages](https://github.com/commonsearch/cosr-back/blob/master/plugins/backlinks.py): outputs a list of pages on a specific domain that have the most backlinks in the document sources we are processing. Let's configure it like this: `--plugin plugins.backlinks.MostExternallyLinkedPages:domain=wikipedia.org,path=out/top_wikipedia/`.
+ - [plugins.backlinks.MostExternallyLinkedPages](https://github.com/commonsearch/cosr-back/blob/master/plugins/backlinks.py): outputs a list of pages on a specific domain that have the most backlinks in the document sources we are processing. Let's configure it like this: `--plugin plugins.backlinks.MostExternallyLinkedPages:domain=wikipedia.org,output=out/top_wikipedia/`.
 
 Finally, let's add another useful option to our job: `--stop_delay 600`. This will prevent Spark from exiting for 10 minutes when your job is done, so that we have time to open the Spark Web UI and see what happened!
 
@@ -78,7 +78,7 @@ spark-submit --verbose \
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl:limit=8,maxdocs=1000 \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
-	--plugin plugins.backlinks.MostExternallyLinkedPages:domain=wikipedia.org,path=out/top_wikipedia/ \
+	--plugin plugins.backlinks.MostExternallyLinkedPages:domain=wikipedia.org,output=out/top_wikipedia/ \
 	--stop_delay 600
 ```
 
@@ -185,7 +185,7 @@ spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 5
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
-	--plugin plugins.backlinks.MostExternallyLinkedPages:path=s3a://my-spark-results/top_wikipedia/,domain=wikipedia.org,gzip=1
+	--plugin plugins.backlinks.MostExternallyLinkedPages:output=s3a://my-spark-results/top_wikipedia/,domain=wikipedia.org,gzip=1
 ```
 
 
@@ -207,7 +207,7 @@ spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 5
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl \
 	--plugin "plugins.filter.Domains:skip=1,domains=tumblr.com wordpress.com" \
-	--plugin plugins.dump.DocumentMetadata:path=s3a://my-spark-results/intermediate-metadata/,coalesce=6000,abort=1 \
+	--plugin plugins.dump.DocumentMetadata:output=s3a://my-spark-results/intermediate-metadata/,coalesce=6000,abort=1 \
 	--plugin plugins.backlinks.MostExternallyLinkedPages
 ```
 
@@ -223,7 +223,7 @@ Now, we can run the pipeline again with the `metadata` source pointed at the int
 spark-submit --verbose --master spark://[spark_master_ip]:7077 --driver-memory 50G --executor-memory 50G --properties-file /cosr/back/spark/conf/spark-defaults.conf \
 	/cosr/back/spark/jobs/pipeline.py \
 	--source metadata:path=s3a://my-spark-results/intermediate-metadata/ \
-	--plugin plugins.backlinks.MostExternallyLinkedPages:path=s3a://my-spark-results/top_wikipedia/,domain=wikipedia.org,gzip=1
+	--plugin plugins.backlinks.MostExternallyLinkedPages:output=s3a://my-spark-results/top_wikipedia/,domain=wikipedia.org,gzip=1
 ```
 
 This should be pretty fast because the intermediate data is much smaller than the original source. You can run more pipelines and plugins based on the same data before discarding the intermediate metadata!

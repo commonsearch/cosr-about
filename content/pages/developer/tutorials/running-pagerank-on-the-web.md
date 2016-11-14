@@ -26,7 +26,7 @@ To dump the web graph, we are doing to use the `webgraph` plugin. Here is how yo
 spark-submit --verbose \
 	/cosr/back/spark/jobs/pipeline.py \
 	--source commoncrawl:limit=4,maxdocs=100 \
-	--plugin plugins.webgraph.DomainToDomainParquet:path=out/webgraph/ \
+	--plugin plugins.webgraph.DomainToDomainParquet:output=out/webgraph/ \
 	--stop_delay 600
 ```
 
@@ -45,7 +45,7 @@ This is not done though our usual `pipeline.py` Spark job but with a dedicated o
 spark-submit --verbose \
 	/cosr/back/spark/jobs/pagerank.py \
 	--webgraph out/webgraph/ \
-	--dump out/pagerank/ \
+	--output out/pagerank/ \
 	--tmpdir /tmp/spark-pr/ \
 	--maxiter 20 --tol 0.001 --precision 0.000001 \
 	--stats 5 \
@@ -55,7 +55,7 @@ spark-submit --verbose \
 
 Let's review these new options:
 
- - `--dump` specifies the final output directory for the list of PageRanks
+ - `--output` specifies the final output directory for the list of PageRanks
  - `--tmpdir` specifies a directory (which may also be on S3) that will be used to store intermediate results every 5 iterations of the PageRank algorithm, for performance and lower memory requirements.
  - `--maxiter 20 --tol 0.001 --precision 0.000001` are parameters for the PageRank convergence. (TODO explain them better)
  - `--stats 5` will print statistics on the algorithm every 5 iterations
