@@ -10,7 +10,7 @@ The operations manage the deployment, performance and availability of our online
 The [cosr-ops repository](https://github.com/commonsearch/cosr-ops) contains tools and configurations for deploying and operating 2 components of our [infrastructure](/developer/architecture):
 
 - Our Elasticsearch cluster, using [AWS CloudFormation](https://aws.amazon.com/cloudformation/).
-- Our [Backend](/developer/backend), using the [Spark EC2 scripts](http://spark.apache.org/docs/latest/ec2-scripts.html).
+- Our [Backend](/developer/backend), using the [Spark EC2 scripts](https://github.com/amplab/spark-ec2).
 
 All available commands are [documented in the Makefile](https://github.com/commonsearch/cosr-ops/blob/master/Makefile).
 
@@ -34,7 +34,7 @@ Our cluster has 3 types of nodes, as [explained in the Elasticsearch docs](https
 
 ## Spark
 
-We are currently using the [Spark EC2 scripts](http://spark.apache.org/docs/latest/ec2-scripts.html) to provision our Spark workers, though we aim to switch to CloudFormation in the future.
+We are currently using the [Spark EC2 scripts](https://github.com/amplab/spark-ec2) to provision our Spark workers, though we aim to switch to CloudFormation in the future.
 
 Our base AMI is [built using Packer](https://github.com/commonsearch/cosr-ops/tree/master/aws/spark).
 
